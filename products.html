@@ -1,228 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Products</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
-    <div class="container">
-
-        <!-- HEADER -->
-        <div class="header">
-
-            <h1>Daftar Produk</h1>
-
-            <div class="header-buttons">
-
-                <button id="addProductBtn">
-                    + Tambah Produk
-                </button>
-
-                <button onclick="logout()">
-                    Logout
-                </button>
-
+    <div class="container-products">
+        <div class="card-products">
+            <div class="header">
+                <h1>📦 Daftar Produk</h1>
+                <div class="header-buttons">
+                    <button id="addProductBtn" class="btn btn-primary">+ Tambah Produk</button>
+                    <button onclick="logout()" class="btn btn-danger">Logout</button>
+                </div>
             </div>
 
+            <!-- Search & Sort -->
+            <div class="toolbar">
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" placeholder="🔍 Cari produk..." class="search-input">
+                    <button id="clearSearchBtn" class="clear-search" style="display: none;">✕</button>
+                </div>
+                
+                <div class="sort-wrapper">
+                    <select id="sortBy" class="sort-select">
+                        <option value="created_at">Sort by: Created At</option>
+                        <option value="name">Sort by: Name</option>
+                    </select>
+                    <select id="sortOrder" class="sort-select">
+                        <option value="desc">DESC (↓)</option>
+                        <option value="asc">ASC (↑)</option>
+                    </select>
+                    <button id="searchBtn" class="btn btn-secondary">Cari</button>
+                </div>
+            </div>
+
+            <!-- Loading Skeleton -->
+            <div id="loadingSkeleton" class="loading-skeleton">
+                <div class="skeleton-row"><div class="skeleton-cell"></div><div class="skeleton-cell"></div><div class="skeleton-cell"></div><div class="skeleton-cell"></div></div>
+                <div class="skeleton-row"><div class="skeleton-cell"></div><div class="skeleton-cell"></div><div class="skeleton-cell"></div><div class="skeleton-cell"></div></div>
+                <div class="skeleton-row"><div class="skeleton-cell"></div><div class="skeleton-cell"></div><div class="skeleton-cell"></div><div class="skeleton-cell"></div></div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">📭</div>
+                <p>Belum ada produk</p>
+                <button id="emptyAddBtn" class="btn btn-primary">+ Tambah Produk Pertama</button>
+            </div>
+
+            <!-- No Result -->
+            <div id="noResultState" class="empty-state" style="display: none;">
+                <div class="empty-icon">🔍</div>
+                <p>Tidak ada produk yang cocok dengan "<span id="searchKeyword"></span>"</p>
+                <button id="clearSearchBtnResult" class="btn btn-secondary">Hapus Filter</button>
+            </div>
+
+            <!-- Table Products -->
+            <div id="productsContainer" style="display: none;">
+                <div class="table-responsive">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="name">Nama Produk ↕️</th>
+                                <th class="sortable" data-sort="price">Harga ↕️</th>
+                                <th>Tanggal Dibuat</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination" style="display: none;">
+                <button id="prevPage" class="btn-pagination" disabled>◀ Prev</button>
+                <div class="pagination-info">
+                    <span id="pageInfo">Halaman 1</span>
+                    <span class="total-data" id="totalData"></span>
+                </div>
+                <button id="nextPage" class="btn-pagination" disabled>Next ▶</button>
+            </div>
         </div>
-
-
-        <!-- SEARCH & SORT -->
-        <div class="toolbar">
-
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Cari produk..."
-            >
-
-            <select id="sortBy">
-
-                <option value="created_at">
-                    Created At
-                </option>
-
-                <option value="name">
-                    Name
-                </option>
-
-            </select>
-
-            <select id="sortOrder">
-
-                <option value="desc">
-                    DESC
-                </option>
-
-                <option value="asc">
-                    ASC
-                </option>
-
-            </select>
-
-            <button id="searchBtn">
-                Cari
-            </button>
-
-        </div>
-
-
-        <!-- LOADING -->
-        <div id="loadingSkeleton">
-
-            Loading products...
-
-        </div>
-
-
-        <!-- EMPTY -->
-        <div
-            id="emptyState"
-            style="display:none;"
-        >
-
-            Tidak ada produk
-
-        </div>
-
-
-        <!-- TABLE -->
-        <div
-            id="productsContainer"
-            style="display:none;"
-        >
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Name</th>
-
-                        <th>Price</th>
-
-                        <th>Created At</th>
-
-                        <th>Action</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="productsTableBody">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        <!-- PAGINATION -->
-        <div id="pagination">
-
-            <button id="prevPage">
-                Prev
-            </button>
-
-            <span id="pageInfo">
-                Halaman 1
-            </span>
-
-            <button id="nextPage">
-                Next
-            </button>
-
-        </div>
-
     </div>
 
-
-    <!-- EDIT MODAL -->
-    <div
-        id="editModal"
-        class="modal"
-        style="display:none;"
-    >
-
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal" style="display: none;">
         <div class="modal-content">
-
-            <h2>Edit Product</h2>
-
+            <div class="modal-header">
+                <h2>✏️ Edit Produk</h2>
+                <span class="close-modal">&times;</span>
+            </div>
             <form id="editProductForm">
-
-                <input
-                    type="hidden"
-                    id="editProductId"
-                >
-
+                <input type="hidden" id="editProductId">
                 <div class="form-group">
-
-                    <label>Name</label>
-
-                    <input
-                        type="text"
-                        id="editName"
-                        required
-                    >
-
+                    <label for="editName">Nama Produk</label>
+                    <input type="text" id="editName" required>
                 </div>
-
                 <div class="form-group">
-
-                    <label>Price</label>
-
-                    <input
-                        type="number"
-                        id="editPrice"
-                        min="1"
-                        required
-                    >
-
+                    <label for="editPrice">Harga (Rp)</label>
+                    <input type="number" id="editPrice" min="1" required>
                 </div>
-
-                <div
-                    id="editError"
-                    class="inline-error"
-                ></div>
-
-                <div class="modal-actions">
-
-                    <button type="submit">
-                        Simpan
-                    </button>
-
-                    <button
-                        type="button"
-                        id="closeModalBtn"
-                    >
-                        Batal
-                    </button>
-
+                <div id="editError" class="inline-error"></div>
+                <div class="modal-buttons">
+                    <button type="button" id="closeModalBtn" class="btn btn-secondary">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
-
             </form>
-
         </div>
-
     </div>
 
     <script src="script.js"></script>
-
 </body>
-
 </html>

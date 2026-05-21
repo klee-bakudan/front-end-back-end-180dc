@@ -9,13 +9,16 @@
 </head>
 
 <body>
-    <script src="script.js"></script>
-     <div class="container">
+    <div class="container">
         <div class="card">
             <h2>Daftar Akun</h2>
             
-            <!-- ⚠️ PASTIKAN ada id="registerForm" dan method GA usah ditulis -->
             <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
@@ -35,13 +38,13 @@
                 <button type="submit" class="btn btn-primary">Daftar</button>
             </form>
 
-            <div id="toastContainer"></div>
-
             <p class="link">
                 Sudah punya akun? <a href="login.html">Login di sini</a>
             </p>
         </div>
     </div>
+
+    <script src="script.js"></script>
 
 </body>
 
