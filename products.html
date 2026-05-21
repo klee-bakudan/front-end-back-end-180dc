@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Products</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+
+            <h1>Daftar Produk</h1>
+
+            <div class="header-buttons">
+
+                <button id="addProductBtn">
+                    + Tambah Produk
+                </button>
+
+                <button onclick="logout()">
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH & SORT -->
+        <div class="toolbar">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari produk..."
+            >
+
+            <select id="sortBy">
+
+                <option value="created_at">
+                    Created At
+                </option>
+
+                <option value="name">
+                    Name
+                </option>
+
+            </select>
+
+            <select id="sortOrder">
+
+                <option value="desc">
+                    DESC
+                </option>
+
+                <option value="asc">
+                    ASC
+                </option>
+
+            </select>
+
+            <button id="searchBtn">
+                Cari
+            </button>
+
+        </div>
+
+
+        <!-- LOADING -->
+        <div id="loadingSkeleton">
+
+            Loading products...
+
+        </div>
+
+
+        <!-- EMPTY -->
+        <div
+            id="emptyState"
+            style="display:none;"
+        >
+
+            Tidak ada produk
+
+        </div>
+
+
+        <!-- TABLE -->
+        <div
+            id="productsContainer"
+            style="display:none;"
+        >
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Price</th>
+
+                        <th>Created At</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="productsTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- PAGINATION -->
+        <div id="pagination">
+
+            <button id="prevPage">
+                Prev
+            </button>
+
+            <span id="pageInfo">
+                Halaman 1
+            </span>
+
+            <button id="nextPage">
+                Next
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- EDIT MODAL -->
+    <div
+        id="editModal"
+        class="modal"
+        style="display:none;"
+    >
+
+        <div class="modal-content">
+
+            <h2>Edit Product</h2>
+
+            <form id="editProductForm">
+
+                <input
+                    type="hidden"
+                    id="editProductId"
+                >
+
+                <div class="form-group">
+
+                    <label>Name</label>
+
+                    <input
+                        type="text"
+                        id="editName"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Price</label>
+
+                    <input
+                        type="number"
+                        id="editPrice"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+                <div
+                    id="editError"
+                    class="inline-error"
+                ></div>
+
+                <div class="modal-actions">
+
+                    <button type="submit">
+                        Simpan
+                    </button>
+
+                    <button
+                        type="button"
+                        id="closeModalBtn"
+                    >
+                        Batal
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

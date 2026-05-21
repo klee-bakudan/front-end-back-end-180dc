@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+
+            <h1>Daftar Produk</h1>
+
+
+
+            <a href="products.html">
+                <div class="header-actions">
+
+                    <button id="addProductBtn">
+                        + Tambah Produk
+                    </button>
+
+                    <button onclick="logout()">
+                        Logout
+                    </button>
+
+                </div>
+            </a>
+
+
+        </div>
+
+        <!-- SEARCH -->
+        <div class="toolbar">
+
+            <input type="text" id="searchInput" placeholder="Cari produk...">
+
+            <!-- SORT BY -->
+            <select id="sortBy">
+
+                <option value="created_at">
+                    Created At
+                </option>
+
+                <option value="name">
+                    Name
+                </option>
+
+            </select>
+
+            <!-- ORDER -->
+            <select id="sortOrder">
+
+                <option value="desc">
+                    DESC
+                </option>
+
+                <option value="asc">
+                    ASC
+                </option>
+
+            </select>
+
+            <button id="searchBtn">
+                Cari
+            </button>
+
+        </div>
+
+        <!-- LOADING -->
+        <div id="loadingSkeleton">
+
+            <p>Loading products...</p>
+
+        </div>
+
+        <!-- EMPTY -->
+        <div id="emptyState" style="display:none;">
+
+            <p>Tidak ada produk</p>
+
+        </div>
+
+        <!-- TABLE -->
+        <div id="productsContainer" style="display:none;">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Created At</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="productsTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- PAGINATION -->
+        <div id="pagination" style="
+                margin-top:20px;
+                display:flex;
+                align-items:center;
+                gap:10px;
+            ">
+
+            <button id="prevPage">
+                Prev
+            </button>
+
+            <span id="pageInfo">
+                Halaman 1
+            </span>
+
+            <button id="nextPage">
+                Next
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
