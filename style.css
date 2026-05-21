@@ -7,11 +7,15 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
-    align-items: center;
+
     padding: 20px;
+
+    align-items: flex-start;
 }
 
 /* Container untuk form kecil (register/login) */
@@ -118,42 +122,27 @@ input:focus, select:focus {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
     gap: 15px;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
 }
 
 .search-wrapper {
-    flex: 1;
+    flex: 0 0 280px;  /* lebar tetap 280px, tidak ikut flex */
     position: relative;
-    min-width: 200px;
-}
-
-.search-input {
-    width: 100%;
-    padding: 10px 35px 10px 15px;
-}
-
-.clear-search {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: #999;
 }
 
 .sort-wrapper {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
 
-.sort-select {
-    width: auto;
-    min-width: 130px;
+.search-input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
 }
 
 /* Table */
@@ -421,4 +410,201 @@ input:focus, select:focus {
         flex-direction: column;
         text-align: center;
     }
+}
+
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 768px) {
+    
+    /* Container products */
+    .container-products {
+        padding: 10px;
+        max-width: 100%;
+    }
+    
+    .card-products {
+        padding: 15px;
+    }
+    
+    /* Header */
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .header-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Toolbar - Search & Sort */
+    .toolbar {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 10px;  /* ← jarak kecil di mobile */
+    }
+    
+    .search-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .search-input {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .sort-wrapper {
+        width: 100%;
+        justify-content: space-between;
+        gap: 5px;
+    }
+    
+    .sort-select {
+        flex: 1;
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    .btn-secondary {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    /* Tabel - buat scroll horizontal */
+    .table-responsive {
+        overflow-x: auto;
+        margin-top: 5px;  /* ← jarak kecil */
+    }
+    
+    .product-table {
+        min-width: 500px;
+    }
+    
+    .product-table th,
+    .product-table td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+    
+    /* Action buttons */
+    .btn-edit, .btn-delete {
+        font-size: 14px;
+        padding: 4px 6px;
+    }
+    
+    /* Pagination */
+    .pagination {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .pagination-info {
+        order: -1;
+    }
+    
+    .btn-pagination {
+        padding: 6px 15px;
+        font-size: 12px;
+    }
+    
+    /* Modal Edit */
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .modal-header h2 {
+        font-size: 18px;
+    }
+    
+    /* Empty state */
+    .empty-state {
+        padding: 30px 15px;
+    }
+    
+    .empty-icon {
+        font-size: 48px;
+    }
+    
+    /* Loading skeleton */
+    .skeleton-cell {
+        height: 35px;
+    }
+    
+    /* Logout button */
+    .logout-btn {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}
+
+/* ========== MOBILE SANGAT KECIL (max 480px) ========== */
+@media (max-width: 480px) {
+
+    body {
+
+        padding: 8px;
+        align-items: flex-start;
+
+    }
+
+    .container-products {
+
+        width: 100%;
+        padding: 0;
+
+    }
+
+    .card-products {
+
+        padding: 12px;
+        border-radius: 8px;
+
+    }
+
+    .toolbar {
+
+        margin-bottom: 6px !important;
+        gap: 6px;
+
+    }
+
+    .table-responsive {
+
+        margin-top: 0 !important;
+
+    }
+
+    .product-table {
+
+        margin-top: 0 !important;
+
+    }
+
+    #productsContainer {
+
+        margin-top: 0 !important;
+
+    }
+
+    .pagination {
+
+        margin-top: 10px;
+        padding-top: 10px;
+
+    }
+
+    .search-wrapper {
+    flex: 0 0 0px;  
+    position: relative;
+}
+
+
 }
