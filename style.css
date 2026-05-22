@@ -4,27 +4,21 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-
-    padding: 20px;
-
-    align-items: flex-start;
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    min-height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
 }
 
-/* Container untuk form kecil (register/login) */
 .container {
     width: 100%;
     max-width: 400px;
 }
 
-/* Container untuk products (lebih lebar) */
+
 .container-products {
     width: 100%;
     max-width: 1200px;
@@ -45,7 +39,7 @@ body {
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 
-/* Header */
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -60,7 +54,7 @@ body {
     gap: 10px;
 }
 
-/* Form Groups */
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -86,7 +80,7 @@ input:focus, select:focus {
     border-color: #667eea;
 }
 
-/* Buttons */
+
 .btn {
     padding: 10px 20px;
     border: none;
@@ -117,7 +111,7 @@ input:focus, select:focus {
     color: white;
 }
 
-/* Toolbar (search & sort) */
+
 .toolbar {
     display: flex;
     justify-content: space-between;
@@ -128,7 +122,7 @@ input:focus, select:focus {
 }
 
 .search-wrapper {
-    flex: 0 0 280px;  /* lebar tetap 280px, tidak ikut flex */
+    flex: 0 0 280px;  
     position: relative;
 }
 
@@ -145,7 +139,7 @@ input:focus, select:focus {
     border-radius: 6px;
 }
 
-/* Table */
+
 .table-responsive {
     overflow-x: auto;
 }
@@ -177,7 +171,7 @@ input:focus, select:focus {
     background-color: #e9ecef;
 }
 
-/* Pagination */
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -219,7 +213,7 @@ input:focus, select:focus {
     color: #999;
 }
 
-/* Loading Skeleton */
+
 .loading-skeleton {
     padding: 20px;
 }
@@ -244,7 +238,7 @@ input:focus, select:focus {
     100% { background-position: -200% 0; }
 }
 
-/* Empty State */
+
 .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -256,7 +250,7 @@ input:focus, select:focus {
     opacity: 0.5;
 }
 
-/* Modal */
+
 .modal {
     position: fixed;
     top: 0;
@@ -304,7 +298,7 @@ input:focus, select:focus {
     margin-top: 20px;
 }
 
-/* Inline Error */
+
 .inline-error {
     color: #dc3545;
     font-size: 13px;
@@ -320,7 +314,7 @@ input:focus, select:focus {
     display: block;
 }
 
-/* Toast */
+
 .toast {
     position: fixed;
     top: 20px;
@@ -354,7 +348,7 @@ input:focus, select:focus {
     }
 }
 
-/* Link */
+
 .link {
     text-align: center;
     margin-top: 20px;
@@ -370,7 +364,7 @@ input:focus, select:focus {
     text-decoration: underline;
 }
 
-/* Action Buttons in Table */
+
 .btn-edit, .btn-delete {
     background: none;
     border: none;
@@ -389,7 +383,7 @@ input:focus, select:focus {
     background: #ffebee;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .product-table th,
     .product-table td {
@@ -412,10 +406,9 @@ input:focus, select:focus {
     }
 }
 
-/* ========== MOBILE RESPONSIVE ========== */
+
 @media (max-width: 768px) {
     
-    /* Container products */
     .container-products {
         padding: 10px;
         max-width: 100%;
@@ -425,7 +418,7 @@ input:focus, select:focus {
         padding: 15px;
     }
     
-    /* Header */
+
     .header {
         flex-direction: column;
         text-align: center;
@@ -438,11 +431,11 @@ input:focus, select:focus {
         justify-content: center;
     }
     
-    /* Toolbar - Search & Sort */
+
     .toolbar {
         flex-direction: column;
         gap: 8px;
-        margin-bottom: 10px;  /* ← jarak kecil di mobile */
+        margin-bottom: 10px; 
     }
     
     .search-wrapper {
@@ -473,10 +466,10 @@ input:focus, select:focus {
         font-size: 12px;
     }
     
-    /* Tabel - buat scroll horizontal */
+
     .table-responsive {
         overflow-x: auto;
-        margin-top: 5px;  /* ← jarak kecil */
+        margin-top: 5px; 
     }
     
     .product-table {
@@ -489,13 +482,13 @@ input:focus, select:focus {
         font-size: 12px;
     }
     
-    /* Action buttons */
+
     .btn-edit, .btn-delete {
         font-size: 14px;
         padding: 4px 6px;
     }
     
-    /* Pagination */
+
     .pagination {
         flex-direction: column;
         gap: 10px;
@@ -511,7 +504,7 @@ input:focus, select:focus {
         font-size: 12px;
     }
     
-    /* Modal Edit */
+
     .modal-content {
         width: 95%;
         padding: 15px;
@@ -522,7 +515,7 @@ input:focus, select:focus {
         font-size: 18px;
     }
     
-    /* Empty state */
+
     .empty-state {
         padding: 30px 15px;
     }
@@ -531,12 +524,12 @@ input:focus, select:focus {
         font-size: 48px;
     }
     
-    /* Loading skeleton */
+
     .skeleton-cell {
         height: 35px;
     }
     
-    /* Logout button */
+
     .logout-btn {
         bottom: 10px;
         right: 10px;
@@ -545,7 +538,7 @@ input:focus, select:focus {
     }
 }
 
-/* ========== MOBILE SANGAT KECIL (max 480px) ========== */
+
 @media (max-width: 480px) {
 
     body {
